@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link rel="icon" href="icono.png" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        header {
+            background-color: #4ca3af;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+        }
+        nav {
+            text-align: center;
+            margin: 1rem 0;
+        }
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #4ca3af;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        .sub-container {
+            background: #ffffff;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            margin-top: 20px;
+            background-color: #4ca3af;
+            color: white;
+        }
+        .test-options {
+            text-align: center;
+            margin: 20px 0;
+        }
+        select {
+            padding: 8px;
+            font-size: 1rem;
+            margin: 10px 0;
+            width: 100%;
+            max-width: 300px;
+        }
+        button {
+            background-color: #4ca3af;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 15px;
+            font-size: 1rem;
+        }
+        button:hover {
+            background-color: #3b8c96;
+        }
+        .test-description {
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #e8f5e9;
+            border-left: 4px solid #4ca3af;
+            border-radius: 4px;
+        }
+        .selector-container {
+            display: flex;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .type-selector {
+            width: 35%;
+            padding: 10px;
+        }
+        .info-box {
+            width: 65%;
+            min-height: 150px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-left: 4px solid #ffa726;
+            border-radius: 4px;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        .vision-image {
+            width: 200px;
+            height: 150px;
+            object-fit: contain;
+            border-radius: 4px;
+        }
+        .info-text {
+            flex: 1;
+        }
+        @media (max-width: 768px) {
+            .selector-container {
+                flex-direction: column;
+            }
+            .type-selector,
+            .info-box {
+                width: 100%;
+            }
+            .info-box {
+                flex-direction: column;
+            }
+            .vision-image {
+                width: 100%;
+                height: auto;
+            }
+        }
+        h3 {
+            color: #2c6975;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Diagnóstico de Daltonismo</h1>
+    </header>
+    
+    <nav>
+        <a href="#que-es">¿Qué es el daltonismo?</a>
+        <a href="#test">Realizar Test</a>
+        <a href="#creditos">Contacto</a>
+    </nav>
+    
+    <div class="container" id="que-es">
+        <h2>¿Qué es el daltonismo?</h2>
+        <p>El daltonismo es más común en hombres, aunque puede afectar a diversas poblaciones. 
+            En su mayoría, el daltonismo tiende a ser hereditario y suele afectar más a hombres que 
+            a mujeres, según la Secretaría de Prevención y Promoción de la Salud, se estima que 1 
+            de cada 10 personas puede llegar a padecer algún tipo de daltonismo. La causa principal 
+            tiende a relacionarse con anomalías genéticas en los conos de la retina, responsables 
+            de la percepción de los tres colores primarios: rojo, azul y verde. Sin embargo, el 
+            daltonismo también puede desarrollarse más adelante en la vida a causa de 
+            enfermedades o lesiones en los ojos o el cerebro.</p>
+    </div>
+    
+    <div class="container" id="test">
+        <h2>Tipos de Daltonismo</h2>
+        
+        <!-- Primer recuadro - Tipos de Daltonismo -->
+        <div class="sub-container">
+            <h3>PERCEPCION DEL COLOR</h3>
+            <div class="selector-container">
+                <div class="type-selector">
+                    <label for="color-blind-type">Seleccione tipo:</label>
+                    <select id="color-blind-type" name="color-blind-type" onchange="updateColorBlindnessInfo()">
+                        <option value="">Visión normal</option>
+                        <option value="deuteranopia">Deuteranopía</option>
+                        <option value="protanopia">Protanopía</option>
+                        <option value="tritanopia">Tritanopía</option>
+                        <option value="monocromacia">Monocromacia</option>
+                    </select>
+                </div>
+                
+                <div class="info-box" id="color-blind-info">
+                    <img src="images/vision1.png" class="vision-image" id="vision-img" alt="Tipo de visión">
+                    <div class="info-text">
+                        <p id="vision-description">Seleccione un tipo de visión para ver su descripción y representación visual.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Segundo recuadro - Selección de Test -->
+        <div class="sub-container">
+            <h3>Selección de Prueba</h3>
+            <div class="test-options">
+                <label for="test-type">Elija una prueba:</label>
+                <select id="test-type" name="test-type" onchange="updateTestDescription()">
+                    <option value="ishihara.html">Test de Ishihara</option>
+                    <option value="hrr.html">Test HRR</option>
+                </select>
+            </div>
+            
+            <div class="test-description" id="test-description">
+                <p><strong>Test de Ishihara:</strong>Para realizar este test hay que utilizar luz natural, evitando los reflejos. El paciente debe situarse a una distancia de 75cm.
+            El test debe realizarse de forma monocular, es decir, tapándose el otro ojo</p>
+            </div>
+
+            <form onsubmit="redirectToTest(event)" style="text-align: center;">
+                <button type="submit">Iniciar Test</button>
+            </form>
+        </div>
+    </div>
+    
+    <footer id="creditos">
+        <p>Contacto: diagnostico@daltonismo.com</p>
+    </footer>
+
+    <script>
+        // Actualizar información de visión con imágenes
+        function updateColorBlindnessInfo() {
+            const type = document.getElementById("color-blind-type").value;
+            const visionImg = document.getElementById("vision-img");
+            const description = document.getElementById("vision-description");
+            
+            const images = {
+                'deuteranopia': 'vision2.png',
+                'protanopia': 'vision3.png',
+                'tritanopia': 'vision4.png',
+                'monocromacia': 'vision5.png',
+                'default': 'vision1.png'
+            };
+
+            const descriptions = {
+                'deuteranopia': '<strong>Deuteranopía:</strong> Ausencia de conos verdes. Dificultad para distinguir entre tonos rojos y verdes.',
+                'protanopia': '<strong>Protanopía:</strong> Ausencia de conos rojos. Los tonos rojos se perciben más oscuros.',
+                'tritanopia': '<strong>Tritanopía:</strong> Defecto en conos azules. Confusión entre tonos azules y amarillos.',
+                'monocromacia': '<strong>Monocromacia:</strong> Visión monocromática. Alta sensibilidad a la luz solar.',
+                'default': 'Seleccione un tipo de visión para ver su descripción y representación visual.'
+            };
+
+            visionImg.src = `images/${images[type] || images['default']}`;
+            description.innerHTML = descriptions[type] || descriptions['default'];
+        }
+
+        // Actualizar descripción del test
+        function updateTestDescription() {
+            const testType = document.getElementById("test-type").value;
+            const description = document.getElementById("test-description");
+            description.innerHTML = testType === "ishihara.html" 
+                ? "<p><strong>Test de Ishihara:</strong> Identifique números en placas con puntos coloreados. Estandarizado para detectar deuteranopía y protanopía.</p>"
+                : "<p><strong>Test HRR:</strong> Evalúa capacidad de distinguir colores mediante patrones con tonos rojos, verdes y azules. Detecta tritanopía.</p>";
+        }
+
+        // Redirección al test
+        function redirectToTest(event) {
+            event.preventDefault();
+            window.location.href = document.getElementById("test-type").value;
+        }
+    </script>
+
+
+<style>
+    .imagen-footer {
+      width: 100vw;          
+                           /* Todo el conocimiento, la totalidad de las preguntas
+                            y respuestas se enceuntran en el perro
+                             -Franz Kafka      (U•ᴥ•U) */
+
+      height: 14vh;         /* 1/8 de la altura (100vh / 8 = 12.5vh) */
+      position: fixed;        /* Fija la imagen en la parte inferior */
+      bottom: 0;              /* Posición desde abajo */
+      left: 0;                /* Alineación a la izquierda */
+      object-fit: cover;      /* Ajusta la imagen sin distorsionar */
+      z-index: 1000;          /* Opcional: asegura que esté sobre otros elementos */
+    }
+  </style>
+  
+  <img src="advertencia.png" class="imagen-footer" alt="Imagen de footer">
+</body>
+</html>
